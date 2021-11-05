@@ -1,0 +1,88 @@
+1:10
+seq(1, 10)
+seq(1, 10, by = 2)
+rep(1:3, each = 2)
+
+vec <- 1:3
+names(vec) <- c("a", "b", "c")
+vec
+
+?rep #for description of function
+help("rep")
+help(rep)
+
+typeof(1)
+typeof(1L)
+typeof(1:3)
+is.numeric(1:3)
+is.character(1:3)
+is.integer(1:3)
+is.double(1:3)
+is.logical(1:3)
+is.vector(1:3)
+as.character(1:3)
+as.logical(1:3)
+as.double(1:3)
+as.numeric(1:3)
+
+vec <- c("a", "b")
+is.character(vec)
+is.double(vec)
+is.numeric(vec)
+is.vector(vec)
+as.numeric(vec)
+as.integer(vec)
+as.logical(vec)
+
+vec <- c(T, F, T)
+is.logical(vec)
+is.numeric(vec)
+as.integer(vec)
+as.numeric(vec)
+as.character(vec)
+
+vector()
+logical()
+numeric()
+
+vec
+length(vec)
+length(character())
+length(1:10000)
+
+apples_vector <- c(40, 50, 60, 70, 80)
+names(apples_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+apples_vector
+apples_vector["Tuesday"]
+apples_vector[c("Tuesday", "Friday")]
+apples_vector[c("Friday", "Tuesday")]
+apples_vector[1]
+apples_vector[length(apples_vector)]
+apples_vector[length(apples_vector)-1]
+apples_vector[2:4]
+apples_vector[4:2]
+apples_vector[2:5]
+apples_vector[2:length(apples_vector)]
+apples_vector[-1] #all the element except first
+apples_vector[-(1:3)] #element - first second third
+apples_vector > 55
+apples_vector[apples_vector > 55] #take only value that respect condition
+apples_vector[apples_vector < 60]
+apples_vector[apples_vector >= 50]
+apples_vector[apples_vector > 50]
+apples_vector[apples_vector <= 50]
+apples_vector[apples_vector == 50]
+apples_vector[apples_vector != 50]
+apples_vector[apples_vector > 50 & apples_vector < 70]
+apples_vector[apples_vector > 70 | apples_vector < 50]
+apples_vector[apples_vector != 50 & apples_vector != 70]
+
+matrix(1:9, nrow = 3)
+matrix(1:9, nrow = 3, byrow = T)
+matrix()
+
+garden <- c(8, 2)
+forest <- c(10, 4)
+hedgerow <- c(1, 19)
+
+matrix(c(garden, forest, hedgerow), nrow = 3, byrow = T)

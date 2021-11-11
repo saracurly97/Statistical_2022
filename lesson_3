@@ -1,0 +1,70 @@
+garden <- c(10, 2)
+forest <- c(8, 3)
+hedgerow <- c(1, 12)
+
+community_matrix <- matrix(c(garden, forest, hedgerow), nrow = 3, byrow = T)
+species <- c("Parus major", "Erithacus rubecula")
+colnames(community_matrix) <- species
+community_matrix
+sites <- c("Garden", "Forest", "Hedgerow")
+rownames(community_matrix) <- sites
+community_matrix
+
+passer <- c(15, 2, 5)
+cbind(community_matrix, passer)
+community_matrix <- cbind(community_matrix, passer)
+colnames(community_matrix)[3] <- "Passer domesticus"
+community_matrix
+park <- c(10, 1, 8)
+community_matrix <- rbind(community_matrix, park)
+rownames(community_matrix)[4] <- "Park"
+community_matrix
+
+dim(community_matrix)
+nrow(community_matrix)
+ncol(community_matrix)
+
+colSums(community_matrix)
+class(colSums(community_matrix))
+
+rowSums(community_matrix)
+
+community_matrix + 2
+community_matrix * 2
+cbind(community_matrix[1:4,1] * 2, community_matrix[, -1])
+community_matrix[1, 1] <- 10
+
+# %*%
+
+community_matrix[, "Parus major"]
+community_matrix[, "Parus major", dop=FALSE]
+class(community_matrix["Garden",])
+class(community_matrix["Garden", , drop = FALSE])
+community_matrix["Garden", ]
+community_matrix["Garden", , drop = FALSE]
+community_matrix[1, ]
+community_matrix[1:2, ]
+community_matrix[, 2:3]
+community_matrix[-2, ]
+community_matrix[-c(2,4), ]
+community_matrix[c(1,3), ]
+community_matrix[c(1,3), c(2, 3)]
+community_matrix[c(1,3), c("Parus major")]
+community_matrix[3:nrow(community_matrix), ]
+
+plants_vector <- c("Herb", "Shrub", "Tree", "Herb", "Shrub")
+plants_factor <- factor(plants_vector)
+plants_factor
+
+as.numeric(plants_vector)
+as.numeric(plants_factor)
+
+temperature_vector <- c("Low", "High", "Medium", "High", "Low")
+temperature_factor <- factor(temperature_vector, ordered=T, levels = c("Low", "Medium", "High"))
+temperature_factor
+as.numeric(temperature_factor)
+
+substrate_vector <- c("L", "S", "L", "L", "S")
+substrate_factor <- factor(substrate_vector)
+levels(substrate_factor) <- c("Limestone", "Siliceous")
+summary(substrate_factor)

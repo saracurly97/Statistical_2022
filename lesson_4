@@ -1,0 +1,78 @@
+dat <- data.frame(
+  id = 1:6, 
+  name = c("Eokochia saxicola", "Cytisus aeolicus",
+           "Anthemis aeolica", "Centaurea aeolica",
+           "Silene hicesiae", "Genista tyrrhena"), 
+  has_legumes = c(F, T, F, F, F, T),
+  population_size = c(50, 2000, 5000, 10000, 200, 3000),
+  growth_form = factor(c("Herb", "Tree", "Herb", "Shrub", "Herb", "Tree"))
+)
+
+dim(dat)
+nrow(dat)
+ncol(dat)
+summary(dat)
+str(dat)
+class(dat)
+
+str(dat)
+class(dat[1, ])
+dat[, 2]
+class(dat[, 2])
+dat[, 2, drop = F]
+class(dat[, 2, drop = F])
+dat$growth_form
+dat["growth_form"]
+dat[, "growth_form"]
+dat[dat$has_legumes == T, ]
+dat[1:2, c("id", "name")]
+dat[, -("id")]
+dat[-("id")]
+dat$id <- NULL
+dat
+
+cbind(dat, 1:6)
+cbind(dat, id = 1:6)
+cbind(id = 1:6, dat)
+dat$id <- 1:6
+#dat$id = 1:6
+dat
+new_data <- data.frame(
+  name= "Limonium minutiflorum",
+  has_legumes = F, 
+  population_size = 2000,
+  growth_form = "Herb",
+  id = 7
+)
+
+rbind(dat, new_data)
+dat <- rbind(dat, new_data)
+dat
+
+vec <- 1:10
+mat <- matrix(1:9, ncol=3)
+dat <- mtcars[1:3, ]
+list(vec, mat, dat)
+my_list <- list(my_vector = vec, my_matrix =mat, my_dataframe = dat )
+my_list
+list(1:2, my_list)
+my_list[["my_vector"]]
+my_list[[1]]
+my_list$my_vector
+my_list[1]
+class(my_list[1])
+class(my_list[[1]])
+my_list$my_other_vector <- c("a", "b", "c")
+my_list
+str(my_list)
+length(my_list)
+my_list[["my_last_vector"]] <- c(T, F, T)
+str(my_list)
+my_list[[1]][3]
+my_list[[2]][1, ]
+names(my_list)
+names(my_list) <- c("a", "b", "c", "d", "e")
+str(my_list)
+
+str(list(my_list, my_list))
+str(c(my_list, my_list))

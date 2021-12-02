@@ -1,0 +1,46 @@
+cheer_me <- function(name) {
+  cheer_string <- paste("Hello", name, sep = " ")
+  print(cheer_string)
+}
+
+cheer_me("Sara")
+
+add_two <- function(num) {
+  num_plus_two <- num + 2
+  return(num_plus_two)
+}
+
+add_two(5)
+add_two(9)
+
+
+
+
+
+
+dune <- read.table("data/dune.txt")
+dune.env <- read.csv("data/dune_env.csv")
+
+dune 
+head(dune.env)
+
+install.packager("vegan")
+library(vegan)
+?dune
+names(dune)
+str(dune.env)
+
+dune.env$Management <- factor(dune.env$Management)
+str(dune.env)
+?factor
+
+dune.env$Moisture <- factor(dune.env$Moisture, ordered = T)
+dune.env$Moisture <- factor(dune.env$Moisture, ordered = T, levels = c(1, 2, 4, 5))
+dune.env$Moisture <- factor(dune.env$Moisture, ordered = T, levels = 1:5)
+
+str(dune.env)
+
+dune.env$Manure <- factor(dune.env$Manure, ordered = T)
+dune.env$Use <- factor(dune.env$Use, ordered = T,
+                       levels = c("Hayfield", "Haypastu", "Pasture"))
+dune.env$Use <- factor(dune.env$Use, ordered = T)

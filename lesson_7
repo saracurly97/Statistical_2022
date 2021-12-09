@@ -1,0 +1,28 @@
+library(vegan)
+data(dune)
+
+dune <- read.table(file = "C:/Users/saras/Desktop/data/dune.txt")
+
+#### loop ###
+for(i in 1:10){
+  print(i)
+}
+
+#### species richness ####
+sr <- vector()
+
+for(i in 1:nrow(dune)) {
+  sr[i] <- sum(dune[i,]>0)
+}
+
+sr
+
+calculate_sr <- function(df){
+  sr <- vector()
+  for(i in 1:nrow(df)) {
+    sr[i] <- sum(df[i,]>0)
+  }
+  return(sr)
+}
+
+calculate_sr(df= dune)

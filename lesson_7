@@ -26,3 +26,54 @@ calculate_sr <- function(df){
 }
 
 calculate_sr(df= dune)
+
+
+
+######## part 2
+
+
+
+library(vegan)
+
+data(dune)
+data(dune.env)
+
+str(dune.env)
+
+summary(dune.env)
+
+hist(dune.env$A1)
+hist(dune.env$A1,
+     xlab = "Thickness of soil A1 horizon (cm)",
+     main = NULL,
+     breaks = 10)
+?hist
+
+counts <- table(dune.env$Management)
+barplot(counts)
+barplot(counts,
+        xlab = "Management type",
+        ylab = "Frequency",
+        names.arg = c("Biological farming",
+                      "Hobby farming",
+                      "Nature reserve",
+                      "Standard farming"))
+
+counts <- table(dune.env$Manure,
+                dune.env$Management)
+
+barplot(counts)
+barplot(counts,
+        xlab = "Management type",
+        ylab = "Frequency",
+        names.arg = c("Biological farming",
+                      "Hobby farming",
+                      "Nature reserve",
+                      "Standard farming"),
+        main = "Management by manure",
+        legend = rownames(counts),
+        xlim = c(0, 6))
+
+counts
+prop.table(counts)
+prop.table(counts, margin = 1)

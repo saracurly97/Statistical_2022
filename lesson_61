@@ -1,0 +1,93 @@
+install.packages("ade4")
+
+library(vegan)
+library(ade4)
+
+?mite
+?BCI
+?aravo
+
+### 2) Import datasets; I use read.csv and read.txt
+bryceveg <- read.csv("C:/Users/saras/Desktop/bryce/data/bryceveg.csv")
+brycesite <- read.table("C:/Users/saras/Desktop/bryce/data/brycesite.txt",
+                        sep = " ",
+                        header = T,
+                        na.strings = c("NA", "")) # we have two types of missing values in our dataset ...
+
+nrow(bryceveg) # number of observations
+ncol(brycesite) # number of environmental variables
+ncol(bryceveg) # number of species
+
+summary(brycesite)
+str(brycesite)
+
+nrow(brycesite)
+nrow(na.omit(brycesite))
+
+index_na <- which(is.na(brycesite), arr.ind = T)
+index_na <- index_na[, 1]
+
+nrow(brycesite)
+nrow(bryceveg)
+
+brycesite <- na.omit(brycesite)
+nrow(brycesite)
+nrow(bryceveg)
+
+bryceveg <- bryceveg[-index_na, ]
+nrow(brycesite)
+nrow(bryceveg)
+
+str(brycesite)
+
+brycesite$depth <- factor(brycesite$depth,
+                          levels = c("shallow", "deep"),
+                          ordered = T)
+unique(brycesite$depth)
+
+unique(brycesite$pos)
+
+brycesite$pos <- factor(brycesite$pos,
+                        levels = c("bottom", "low_slope", "mid_slope", "up_slope", "ridge"),
+                        ordered = T)
+
+str(brycesite)
+decostand
+specnumber
+
+bryceveg <- decostand(bryceveg, method = "pa")
+brycesite$sr <- specnumber(bryceveg)
+sr <- specnumber(bryceveg)
+specnumber(bryceveg, MARGIN = 2)
+sort(specnumber(bryceveg, MARGIN = 2))
+sort(specnumber(bryceveg, MARGIN = 2), decreasing = T)
+plot(sort(specnumber(bryceveg, MARGIN = 2), decreasing = T))
+
+?dune
+?BCI
+?mite
+
+library(ade4)
+?aravo
+
+summary(brycesite$sr)
+
+png("Figure1.png", res = 300, width = 3000, height = 2000)
+hist(brycesite$sr,
+     main = NULL,
+     xlab = "Species richness per site",
+     ylab = "Number of sites")
+dev.off()
+
+barplot(table(brycesite$pos))
+barplot(table(brycesite$pos,
+              brycesite$depth),
+        legend = rownames(table(brycesite$pos,
+                                brycesite$depth)),
+        xlim = c(0, 6))
+
+boxplot(brycesite$sr ~ brycesite$pos,
+        ylim = c(0, 30))
+plot(brycesite$elev, brycesite$sr)
+cor.test(brycesite$elev, brycesite$sr)
+summary(lm(sr ~ elev, data = brycesite))
